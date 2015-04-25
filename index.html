@@ -28,13 +28,13 @@ body {
 <script src="http://d3js.org/d3.v2.min.js?2.9.5"></script>
 <script>
 
-var format = d3.time.format("%m/%d/%y");
+//var format = d3.time.format("%m/%d/%y");
 
 var margin = {top: 20, right: 30, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var x = d3.time.scale()
+var x = d3.scale.linear()
     .range([0, width]);
 
 var y = d3.scale.linear()
@@ -45,7 +45,7 @@ var z = d3.scale.category20c();
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
-    .ticks(d3.time.days);
+    //.ticks(d3.time.days);
 
 var yAxis = d3.svg.axis()
     .scale(y)
@@ -72,12 +72,8 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("data.csv", function(data) {
-  data.forEach(function(d) {
-    d.date = format.parse(d.date);
-    d.value = +d.value;
-  });
-
+d3.csv("example.csv", function(data) {
+ 
   var layers = stack(nest.entries(data));
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
