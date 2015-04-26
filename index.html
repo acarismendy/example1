@@ -88,7 +88,7 @@ console.log(layers);
       .data(layers)
     .enter().append("path")
       .attr("class", "layer")
-      .attr("d", function(d) { return area(d.values); })
+      .attr("d", function(d) {console.log(area(d.values)); return area(d.values); })
       .style("fill", function(d, i) { return z(i); });
 
   svg.append("g")
