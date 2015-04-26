@@ -114,6 +114,11 @@ svg.selectAll(".layer")
       .classed("hover", true)
       tooltip.html( "<p>" + d.key + "<br>" + d.value + "</p>" ).style("visibility", "visible");
     })
+    .on("mouseout", function(d, i) {
+      d3.select(this)
+      .classed("hover", false)
+      tooltip.html( "<p>" + d.key + "<br>" + d.value + "</p>" ).style("visibility", "hidden");
+    })
     
 
 });
