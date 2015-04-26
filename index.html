@@ -42,7 +42,7 @@ var tooltip = d3.select("body")
               .style("top", "30px")
               .style("left", "55px");
 var x = d3.time.scale()
-    .domain([2003,2006])
+    //.domain([2003,2006])
     .range([0, width]);
 
 var y = d3.scale.linear()
@@ -89,7 +89,7 @@ d3.csv("example.csv", function(data) {
   var layers = stack(nest.entries(data));
 console.log(layers);
 
-  //x.domain(d3.extent(data, function(d) { return d.date; }));
+  x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
 
   svg.selectAll(".layer")
