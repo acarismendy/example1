@@ -90,7 +90,7 @@ d3.csv("example.csv", function(data) {
 console.log(layers);
 
   x.domain(d3.extent(data, function(d) { console.log(d.date);return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
+  y.domain([0, d3.max(data, function(d) { console.log(d.y0 + d.y);return d.y0 + d.y; })]);
 
   svg.selectAll(".layer")
       .data(layers)
