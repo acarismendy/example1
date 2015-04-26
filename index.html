@@ -33,7 +33,14 @@ var format = d3.time.format("%m/%d/%y");
 var margin = {top: 20, right: 30, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-
+var tooltip = d3.select("body")
+              .append("div")
+              .attr("class", "remove")
+              .style("position", "absolute")
+              .style("z-index", "20")
+              .style("visibility", "hidden")
+              .style("top", "30px")
+              .style("left", "55px");
 var x = d3.time.scale()
     .range([0, width]);
 
