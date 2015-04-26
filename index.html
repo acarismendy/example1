@@ -106,7 +106,7 @@ svg.selectAll(".layer")
       d3.select(this)
       .classed("hover", true)
       tooltip.html( "<p>" + d.key + "<br>" + d.value + "</p>" ).style("visibility", "visible");
-    })})
+    })
     .on("mouseout",function(d){
       d3.select(this)
       .classed("hover",false)
