@@ -41,7 +41,8 @@ var tooltip = d3.select("body")
               .style("visibility", "hidden")
               .style("top", "30px")
               .style("left", "55px");
-var x = d3.time.scale()
+var x = d3.scale.linear()
+    .domain([23,26])
     .range([0, width]);
 
 var y = d3.scale.linear()
@@ -80,15 +81,15 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("example.csv", function(data) {
-  data.forEach(function(d) {
-    d.date = format.parse(d.date);
-    d.value = +d.value;
-  });
+  //data.forEach(function(d) {
+  //  d.date = format.parse(d.date);
+  //  d.value = +d.value;
+  //});
 
   var layers = stack(nest.entries(data));
 console.log(layers);
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  //x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
 
   svg.selectAll(".layer")
